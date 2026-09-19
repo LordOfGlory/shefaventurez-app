@@ -45,8 +45,12 @@ function Login() {
     <main className="grid min-h-screen place-items-center bg-fog p-6">
       <div className="w-full max-w-sm space-y-5 rounded-xl border border-line bg-paper p-6">
         <div>
-          <p className="text-xs uppercase tracking-wider text-muted">Staff</p>
-          <h1 className="mt-1 text-xl font-semibold">{mode === "up" ? "Create staff account" : "Sign in"}</h1>
+          <img src="/img/logo.png" alt="Shefa Venturez" className="h-8 w-auto" />
+          <p className="kicker mt-6 text-muted">
+            <i />
+            Staff
+          </p>
+          <h1 className="mt-3 text-xl font-semibold">{mode === "up" ? "Create staff account" : "Sign in"}</h1>
           <p className="mt-2 text-sm leading-relaxed text-muted">
             Dashboard access is limited to staff. The first account you create here becomes the admin.
           </p>

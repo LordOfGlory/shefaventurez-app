@@ -14,11 +14,15 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as ConsultationRouteImport } from './routes/consultation'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as DownloadRouteImport } from './routes/download'
 import { Route as EnrollRouteRouteImport } from './routes/enroll/route'
 import { Route as ItServicesRouteImport } from './routes/it-services'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AcademyIndexRouteImport } from './routes/academy/index'
 import { Route as AcademySchoolRouteImport } from './routes/academy/$school'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
@@ -66,9 +70,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CybersecurityRoute = CybersecurityRouteImport.update({
   id: '/cybersecurity',
   path: '/cybersecurity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadRoute = DownloadRouteImport.update({
@@ -89,6 +103,16 @@ const ItServicesRoute = ItServicesRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademyIndexRoute = AcademyIndexRouteImport.update({
@@ -204,10 +228,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/cybersecurity': typeof CybersecurityRouteWithChildren
+  '/disclaimer': typeof DisclaimerRoute
   '/download': typeof DownloadRoute
   '/it-services': typeof ItServicesRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/academy/$school': typeof AcademySchoolRoute
   '/admin/articles': typeof AdminArticlesRoute
   '/admin/downloads': typeof AdminDownloadsRoute
@@ -235,10 +263,14 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/cybersecurity': typeof CybersecurityRouteWithChildren
+  '/disclaimer': typeof DisclaimerRoute
   '/download': typeof DownloadRoute
   '/it-services': typeof ItServicesRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/academy/$school': typeof AcademySchoolRoute
   '/admin/articles': typeof AdminArticlesRoute
   '/admin/downloads': typeof AdminDownloadsRoute
@@ -269,10 +301,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/cybersecurity': typeof CybersecurityRouteWithChildren
+  '/disclaimer': typeof DisclaimerRoute
   '/download': typeof DownloadRoute
   '/it-services': typeof ItServicesRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/academy/$school': typeof AcademySchoolRoute
   '/admin/articles': typeof AdminArticlesRoute
   '/admin/downloads': typeof AdminDownloadsRoute
@@ -304,10 +340,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/consultation'
     | '/contact'
+    | '/cookies'
     | '/cybersecurity'
+    | '/disclaimer'
     | '/download'
     | '/it-services'
     | '/login'
+    | '/privacy'
+    | '/terms'
     | '/academy/$school'
     | '/admin/articles'
     | '/admin/downloads'
@@ -335,10 +375,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/consultation'
     | '/contact'
+    | '/cookies'
     | '/cybersecurity'
+    | '/disclaimer'
     | '/download'
     | '/it-services'
     | '/login'
+    | '/privacy'
+    | '/terms'
     | '/academy/$school'
     | '/admin/articles'
     | '/admin/downloads'
@@ -368,10 +412,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/consultation'
     | '/contact'
+    | '/cookies'
     | '/cybersecurity'
+    | '/disclaimer'
     | '/download'
     | '/it-services'
     | '/login'
+    | '/privacy'
+    | '/terms'
     | '/academy/$school'
     | '/admin/articles'
     | '/admin/downloads'
@@ -402,10 +450,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ConsultationRoute: typeof ConsultationRoute
   ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
   CybersecurityRoute: typeof CybersecurityRouteWithChildren
+  DisclaimerRoute: typeof DisclaimerRoute
   DownloadRoute: typeof DownloadRoute
   ItServicesRoute: typeof ItServicesRoute
   LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   AcademySchoolRoute: typeof AcademySchoolRoute
   PagesSlugRoute: typeof PagesSlugRoute
   ResourcesSlugRoute: typeof ResourcesSlugRoute
@@ -452,11 +504,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cybersecurity': {
       id: '/cybersecurity'
       path: '/cybersecurity'
       fullPath: '/cybersecurity'
       preLoaderRoute: typeof CybersecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/download': {
@@ -485,6 +551,20 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academy/': {
@@ -702,10 +782,14 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ConsultationRoute: ConsultationRoute,
   ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
   CybersecurityRoute: CybersecurityRouteWithChildren,
+  DisclaimerRoute: DisclaimerRoute,
   DownloadRoute: DownloadRoute,
   ItServicesRoute: ItServicesRoute,
   LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   AcademySchoolRoute: AcademySchoolRoute,
   PagesSlugRoute: PagesSlugRoute,
   ResourcesSlugRoute: ResourcesSlugRoute,

@@ -17,7 +17,10 @@ export function CmsHero({
       <div className="hero-shade absolute inset-0" />
       <div className={`relative mx-auto max-w-6xl px-5 ${large ? "py-28 md:py-40" : "py-24 md:py-28"}`}>
         {page.eyebrow ? (
-          <p className="text-xs uppercase tracking-[0.22em] text-paper/70">{page.eyebrow}</p>
+          <p className="kicker text-paper/70">
+            <i />
+            {page.eyebrow}
+          </p>
         ) : null}
         <h1 className={`mt-3 max-w-3xl font-semibold ${large ? "text-5xl md:text-7xl" : "text-4xl md:text-5xl"}`}>
           {page.heading || page.title}

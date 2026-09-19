@@ -141,12 +141,9 @@ function Pay() {
             selected={method === "momo"}
             onSelect={() => setMethod("momo")}
           >
-            <Row label="Name" value={order.momo_name} />
-            {order.momo_number ? (
-              <Row label="Number" value={order.momo_number} />
-            ) : (
-              <p className="text-sm text-muted">Mobile-money number is sent on WhatsApp if it is not stored yet.</p>
-            )}
+            <Row label="Name" value={order.momo_name || "Shefa Venturez"} />
+            <Row label="Number" value={order.momo_number || WHATSAPP_DISPLAY} />
+            <p className="text-sm text-muted">Same number as WhatsApp {WHATSAPP_DISPLAY}.</p>
             <Row label="Amount" value={`UGX ${order.amount_ugx.toLocaleString()}`} />
           </Rail>
         </div>
@@ -218,7 +215,12 @@ function Rail({
       className={`rounded-2xl border p-6 text-left transition ${selected ? "border-ink bg-paper shadow-sm" : "border-line bg-paper hover:border-ink/40"}`}
     >
       <div className="flex items-baseline justify-between gap-3">
-        <p className="font-semibold">{title}</p>
+        <p className="flex items-center gap-2 font-semibold">
+          <span className={`grid h-4 w-4 place-items-center rounded-full border ${selected ? "border-ink bg-ink" : "border-line"}`}>
+            {selected ? <span className="h-1.5 w-1.5 rounded-full bg-paper" /> : null}
+          </span>
+          {title}
+        </p>
         <p className="text-xs text-muted">{hint}</p>
       </div>
       <div className="mt-4 space-y-2">{children}</div>

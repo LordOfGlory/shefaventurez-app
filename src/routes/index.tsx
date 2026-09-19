@@ -47,12 +47,15 @@ function Home() {
         <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover motion-reduce:block hidden" />
         <div className="hero-shade absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-5 py-28 md:py-40">
-          <p className="text-xs uppercase tracking-[0.22em] text-paper/70">{page.eyebrow}</p>
-          <h1 className="mt-5 max-w-3xl text-5xl font-semibold md:text-7xl">{page.heading}</h1>
+          <p className="kicker text-paper/75">
+            <i />
+            {page.eyebrow || "Build. Secure. Learn."}
+          </p>
+          <h1 className="mt-5 max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl lg:text-7xl">{page.heading}</h1>
           {page.lede ? <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/85">{page.lede}</p> : null}
           <div className="mt-10 flex flex-wrap gap-3">
             <a href={page.cta_href || "/consultation"} className="inline-flex h-12 items-center rounded-md bg-paper px-6 text-sm font-medium text-ink hover:bg-fog">
-              {page.cta_label || "Talk to us"}
+              {page.cta_label || "Talk to an expert"}
             </a>
             <Link to="/academy" className="inline-flex h-12 items-center rounded-md border border-paper/40 px-6 text-sm hover:border-paper">
               Explore the academy
@@ -79,6 +82,51 @@ function Home() {
           </Link>
         ))}
       </section>
+
+      {[
+        {
+          k: "IT Services",
+          t: "Reliable systems your team can actually use.",
+          d: "From websites to infrastructure — we start with the problem, not a catalogue of tools.",
+          href: "/it-services",
+          label: "Talk to an IT expert",
+          src: "/img/code.jpg",
+        },
+        {
+          k: "Cybersecurity",
+          t: "Authorized testing. Defensive work. Written scope.",
+          d: "We do not test systems we are not permitted to test. Findings come with practical next steps.",
+          href: "/cybersecurity",
+          label: "Request a security assessment",
+          src: "/img/cyber-pro.jpg",
+        },
+        {
+          k: "Academy",
+          t: "Learn. Build. Secure. Trade. Grow.",
+          d: "IT $349 · Cyber $429 · Forex free lessons, then $299. One school at a time. New students enroll every month.",
+          href: "/academy",
+          label: "Explore courses",
+          src: "/img/academy-africa.jpg",
+        },
+      ].map((p) => (
+        <section key={p.k} className="panel-photo relative overflow-hidden bg-ink text-paper">
+          <img src={p.src} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="hero-shade absolute inset-0" />
+          <div className="relative mx-auto flex min-h-[28rem] max-w-6xl items-end px-5 py-16">
+            <div className="max-w-xl">
+              <p className="kicker text-paper/70">
+                <i />
+                {p.k}
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold md:text-4xl">{p.t}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-paper/80 md:text-base">{p.d}</p>
+              <Link to={p.href} className="mt-6 inline-flex h-12 items-center rounded-md bg-paper px-5 text-sm font-medium text-ink">
+                {p.label}
+              </Link>
+            </div>
+          </div>
+        </section>
+      ))}
 
       <section className="bg-fog">
         <div className="mx-auto max-w-6xl px-5 py-20">
@@ -192,6 +240,22 @@ function Home() {
           </Link>
           <Link to="/academy" className="inline-flex h-12 items-center rounded-md border border-line px-5 text-sm">
             Explore the academy
+          </Link>
+        </div>
+      </section>
+
+      <section className="border-t border-line bg-fog">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-16 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="kicker text-muted">
+              <i />
+              Next step
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold md:text-3xl">Tell us what you need built, protected, or learned.</h2>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">One conversation. One recommended path. Uganda WhatsApp +256 763 533 786.</p>
+          </div>
+          <Link to="/consultation" className="inline-flex h-12 shrink-0 items-center rounded-md bg-ink px-5 text-sm font-medium text-paper">
+            Get started
           </Link>
         </div>
       </section>

@@ -81,8 +81,10 @@ async function settingMap(sql: Awaited<ReturnType<typeof getSql>>) {
 }
 
 function railsFrom(map: Record<string, string>): BankRails {
+  const rawName = map.bank_name || "";
+  const bankName = /i\s*&\s*m/i.test(rawName) ? "" : rawName;
   return {
-    bank_name: map.bank_name || "",
+    bank_name: bankName,
     bank_account_name: map.bank_account_name || "Shefa Venturez",
     bank_usd_account: map.bank_usd_account ?? "",
     bank_ugx_account: map.bank_ugx_account ?? "",

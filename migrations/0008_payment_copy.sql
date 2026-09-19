@@ -24,6 +24,5 @@ where body like '%I&M%' or lede like '%I&M%';
 update programs
 set body = replace(body,
   'A place is confirmed after we see the payment on I&M Bank or Uganda mobile money.',
-  'A place is confirmed after we see the payment by bank transfer or Uganda mobile money.'),
-  updated_at = now()
+  'A place is confirmed after we see the payment by bank transfer or Uganda mobile money.')
 where body like '%I&M%';

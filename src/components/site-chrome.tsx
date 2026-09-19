@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { CONTACT_EMAIL, CYBER_SERVICES, IT_SERVICES, SOCIAL, WHATSAPP_DISPLAY, WHATSAPP_HREF, AREA_NOTE } from "@/lib/content";
+import { CONTACT_EMAIL, CYBER_SERVICES, IT_SERVICES, SITE_URL, SOCIAL, WHATSAPP_DISPLAY, WHATSAPP_HREF, AREA_NOTE } from "@/lib/content";
 import { WaDock } from "@/components/wa-dock";
 
 function navActive(path: string, href: string) {
@@ -9,11 +9,46 @@ function navActive(path: string, href: string) {
   return path === href || path.startsWith(href + "/");
 }
 
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "Shefa Venturez",
+      url: SITE_URL,
+      logo: `${SITE_URL}/img/logo.png`,
+      image: `${SITE_URL}/og.jpg`,
+      email: CONTACT_EMAIL,
+      telephone: "+256763533786",
+      description:
+        "IT services, authorized cybersecurity, and academy training. Serving Uganda and worldwide. New academy students enroll every month.",
+      areaServed: [{ "@type": "Country", name: "Uganda" }, "Worldwide"],
+      sameAs: [SOCIAL.x.href, SOCIAL.facebook.href],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: "+256-763-533-786",
+          contactType: "customer service",
+          areaServed: ["UG"],
+          availableLanguage: ["English"],
+        },
+      ],
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Shefa Venturez Academy",
+      url: `${SITE_URL}/academy`,
+      parentOrganization: { "@type": "Organization", name: "Shefa Venturez" },
+    },
+  ],
+};
+
 export function PublicShell({ children }: { children: React.ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   return (
     <div className="min-h-screen bg-paper text-ink">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
       <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/92 backdrop-blur-md">
         <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-4 px-5">
           <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
@@ -184,7 +219,22 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <p className="border-t border-line px-5 py-4 text-center text-xs text-muted">
-          © {new Date().getFullYear()} Shefa Venturez. Forex content is education and can result in loss of capital.
+          © {new Date().getFullYear()} Shefa Venturez. Forex content is education and can result in loss of capital.{" "}
+          <Link to="/privacy" className="hover:text-ink">
+            Privacy
+          </Link>
+          {" · "}
+          <Link to="/terms" className="hover:text-ink">
+            Terms
+          </Link>
+          {" · "}
+          <Link to="/disclaimer" className="hover:text-ink">
+            Disclaimer
+          </Link>
+          {" · "}
+          <Link to="/cookies" className="hover:text-ink">
+            Cookies
+          </Link>
         </p>
       </footer>
       <WaDock />

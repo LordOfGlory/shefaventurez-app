@@ -57,6 +57,26 @@
   );
 }
 
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.kicker i {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.panel-photo {
+  min-height: 28rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
